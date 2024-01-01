@@ -1,0 +1,33 @@
+﻿<div>
+    <p>Output: @message</p>
+    <button onclick="document.getElementById('my-dialog').showModel()">
+
+        Show
+    </button>
+    <dialog id="my-dialog" >
+
+    <p>Hi There</p>
+ <form method="dialog">
+     <button>Close</button>
+ </form>
+
+
+    </dialog>
+
+
+
+
+</div>
+
+@code {
+    string message;
+    void OnClose(EventArgs e)
+    {
+        message += "onclose";
+    }
+    void OnCancle(EventArgs e)
+    {
+        message += "oncancle";
+    }
+
+}

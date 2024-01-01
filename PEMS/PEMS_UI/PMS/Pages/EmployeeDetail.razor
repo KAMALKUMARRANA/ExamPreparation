@@ -1,0 +1,326 @@
+﻿@page "/employee/{employeeId:int}"
+@using PEMS_UI.Models.DTOs;
+@using PEMS_UI.Models;
+@using PEMS_UI.Services;
+@using PEMS_UI.Components;
+@using System.Net.Mail;
+@using static PEMS_UI.Components.Warning;
+@using System.Web;
+@inject Microsoft.JSInterop.IJSRuntime JSRuntime;
+@using System.Data.SqlClient;
+@using System.Configuration;
+@using System.Threading;
+
+
+@if (ShowWarning) 
+{
+    <Warning OnClickCallback="DismissWarning" Type="@warning_type" Message="@Warning_msg"></Warning>
+}
+else
+{
+    
+
+<Card>
+    <div class="row user-detail-row">
+        <h3>Update Employee</h3>
+        <div class="form-group">
+            <EditForm Model="@addEmployeeForm" OnValidSubmit="EditEmployee">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <p>
+                    <div class="form-floating mb-3">
+                        <InputText class="form-control" id="floatingInput" placeholder="Name here" @bind-Value="addEmployeeForm.Name" />
+                        <label for="floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <InputNumber class="form-control" id="floatingInput" placeholder="Salary here" @bind-Value="addEmployeeForm.Salary" />
+                        <label for="floatingInput">Salary</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <InputSelect shadow rounded id="floatingInput" placeholder="Employee here" @bind-Value="addEmployeeForm.Type" class="form-select">
+                            @foreach (EmployeeType type in Enum.GetValues(typeof(EmployeeType)))
+                            {
+                                <option value="@type">@type.GetDisplayName()</option>
+                            }
+                        </InputSelect>
+                        <label for="floatingInput">Employment Type</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <InputSelect shadow rounded id="floatingInput" placeholder="Position here" @bind-Value="addEmployeeForm.Position" class="form-select">
+                               @*  <select @bind="FilterOperator">
+                                    </select> *@
+                                
+                            @foreach (Position position in Enum.GetValues(typeof(Position)))
+                            {
+                                <option value="@position">@position.GetDisplayName()</option>
+                            }
+                        </InputSelect>
+                        <label for="floatingInput">Position</label>
+                    </div>
+                      
+                        <div class="form-floating mb-3">
+              
+                <InputRadioGroup @bind-Value="addEmployeeForm.Gender" >
+                                <InputRadio Value="@("1")" />Male
+                                <InputRadio Value="@("2")" />Female
+                                <InputRadio Value="@("3")" />Others
+                </InputRadioGroup>
+                        </div>
+                        <div class="form-floating mb-3">
+
+                            <InputText class="form-control" id="floatingInput" placeholder="Email" @bind-Value="addEmployeeForm.Email" />
+
+                        </div>
+                          <div class="form-floating mb-3">
+                        <InputText class="form-control" id="floatingInput" placeholder="Img here" @bind-Value="addEmployeeForm.ImgUrl" />
+                        <label for="floatingInput">Image Url</label>
+                    </div>
+                        @* <label for="floatingInput">Known Languages</label>
+                        <div class="form-floating mb-3">
+                            
+                            <select multiple  class="p-3">
+                              
+                                @foreach(Language item in lang)
+                                {
+                                    <option  value="@item.LanguageName">@item.LanguageName</option>
+                                } 
+                            </select>
+                        
+
+                        </div> *@
+                        <div class="form-floating mb-3">
+                         
+                           @*  <select shadow rounded id="floatingInput" placeholder="Languages here"  @bind="@addEmployeeForm.SelectedLanguageId" multiple class="form-select">
+                         
+                                <option selected disabled="true">--select languages--</option>
+                                @foreach (Language item in lang)
+                                {
+                                    <option value="@item.LangId" >@item.LanguageName</option>
+                                }
+                            </select>
+                            
+                            <label for="floatingInput">Knowing Language</label> *@
+
+
+                            <p><label> Select one or more Languages: 
+                                    <select @bind="SelectedLanguages" multiple>
+                               @*  <option value="bal">Baltimore</option> 
+                                <option value="la">Los Angeles</option> 
+                                <option value="pdx">Portland</option> 
+                                <option value="sf">San Francisco</option> *@
+                                        @foreach (Language item in lang)
+                                        {
+                                            <option value="@item.LangId">@item.LanguageName</option>
+                                        }
+                                        
+
+                            </select> </label>
+                            </p>
+                                @if (SelectedLanguages.Length == 0)
+                            {
+                                <span> Selected Languages: </span>
+                            } else
+                            {
+                                @* @for (var i = 0; i < SelectedLanguages.Length; i++)
+                                {
+                                    @foreach (Language item in lang)
+                                    {
+                                        if (int.Parse(SelectedLanguages.ElementAt(i)) == item.LangId)
+                                        {
+                                            SelectedLanguagesName[i] = item.LanguageName;
+                                        }
+
+                                    }
+                                } *@
+                                <span> Selected Languages: @string.Join(", ", SelectedLanguages)</span>  
+                               
+                              
+                            }
+                            @* <span> Selected Languages: @((SelectedLanguages.ElementAt(0) == "") ? "" : (string.Join(", ", lang.ElementAt(int.Parse(SelectedLanguages.Last())-1).LanguageName.ToString()))) </span> *@
+                            @* <span> Selected Languages: @string.Join(", ", (SelectedLanguages.ElementAt(0) == "") ? "" : (lang.ElementAt(int.Parse(SelectedLanguages.Last())-1).LanguageName.ToString())) </span> *@
+                        </div>
+           
+                      
+                    <div class="form-floating mb-3">
+                          
+                                <InputTextArea class="form-control" id="floatingInput" placeholder="Description"  @bind-Value="addEmployeeForm.Description" ></InputTextArea>
+                            <label for="floatingInput">Description</label>
+                    </div>
+                        <div class="form-floating mb-3">
+                            <label>I am accept all terms and Condition</label>
+                            <InputCheckbox @bind-Value="@addEmployeeForm.TC" id="fav"></InputCheckbox>
+                            
+
+
+                        </div>
+                    
+                </p>
+                <button class="btn btn-primary" type="submit" @onclick="@EditEmployee">Update</button>
+                <div @onclick="@DeleteConfirmation" class="btn btn-danger" type="button">Delete</div>
+            </EditForm>
+        </div>
+    </div>
+</Card>
+}
+
+@if (ShowDeleteModel)
+{
+    <DeleteConfirmationModal>
+
+        <p>Are You Sure You want to delete? </p>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary me-1" @onclick=@DeleteEmployee type="button">Confirm</button>
+            <button class="btn btn-primary" @onclick=@CancleDelete>Cancle</button>
+
+        </div>
+    </DeleteConfirmationModal>
+}
+@code {
+    [Parameter] public int EmployeeId { get; set; }
+
+    [Inject] private IEmployeeService EmployeeService { get; set; }
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    private AddEmployeeForm addEmployeeForm = new();
+    private bool ShowDeleteModel = false;
+    private bool ShowWarning = false;
+    private string Warning_msg = "";
+    private WarningType warning_type;
+    private Employee Employee;
+    public List<Language> lang { get; set; } = new List<Language>();
+    public string message = "Data";
+
+    private async Task Alert(string result) => await JSRuntime.InvokeVoidAsync("Alert", result);
+    // public string[] SelectedLanguages = new string[0];
+    public string[] SelectedLanguages { get; set; } = new[] {""};
+    public string StoreLanguage;
+    public string ViewLanguage;
+    private bool isVisible = false;
+    private async Task ShowPopup()
+    {
+        isVisible = true;
+        StateHasChanged();
+    }
+    private async Task Close()
+    {
+        isVisible = false;
+        StateHasChanged();
+    }
+
+
+
+
+    // public string[] SelectedLanguagesName = new string[]{"};
+    protected override async Task OnInitializedAsync()
+    {
+
+        // lang = new List<Language>();
+
+        var response = await EmployeeService.GetEmployee(EmployeeId);
+
+        lang = await EmployeeService.GetLanguage();
+
+        Employee = response.Employee;
+
+
+        addEmployeeForm.Name = Employee.Name;
+        addEmployeeForm.Type = Employee.Type;
+        addEmployeeForm.Position = Employee.Position;
+        addEmployeeForm.Salary = Employee.Salary;
+        addEmployeeForm.ImgUrl = Employee.ImgUrl;
+        addEmployeeForm.Gender = Employee.Gender;
+        addEmployeeForm.Description = Employee.Description;
+        addEmployeeForm.LangId = Employee.LangId;
+        addEmployeeForm.Language = Employee.Language;
+        addEmployeeForm.Email=Employee.Email;
+        addEmployeeForm.TC = Employee.TC;
+
+        try
+        {
+            if (Employee.Language.Length != null && Employee.Language != " ")
+            {
+                SelectedLanguages = Employee.Language.Split(",");
+            }
+            else
+            {
+                Alert("Language are not Selected!");
+            }
+        }
+        catch
+        {
+            Alert("Language are not Selected!");
+        }
+
+
+
+        
+    }
+
+
+    private async Task EditEmployee(){
+
+        StoreLanguage = string.Join(",", SelectedLanguages);
+
+        if (addEmployeeForm.TC)
+        {
+            Employee.Name = addEmployeeForm.Name;
+            Employee.Type = addEmployeeForm.Type;
+            Employee.Position = addEmployeeForm.Position;
+            Employee.Salary = addEmployeeForm.Salary;
+            Employee.ImgUrl = addEmployeeForm.ImgUrl;
+            Employee.Gender = addEmployeeForm.Gender;
+            Employee.Description = addEmployeeForm.Description;
+            Employee.LangId = addEmployeeForm.LangId;
+            Employee.Email = addEmployeeForm.Email;
+            Employee.TC = addEmployeeForm.TC;
+            Employee.Language = StoreLanguage;
+  
+
+            var response = await EmployeeService.EditEmployee(Employee);
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.Credentials = new System.Net.NetworkCredential("kamalworld.official@gmail.com", "thpvebvvvusqupsn");
+            MailMessage msg = new MailMessage();
+            smtp.EnableSsl = true;
+            msg.Subject = "Account Credential@PEMS";
+            msg.Body = "Dear " + addEmployeeForm.Name.Trim() +"\n Your Information has been updated!"+ "\n\nThanks & Regard\n Admin \n DEIMS!";
+            string toaddress = addEmployeeForm.Email.ToString().Trim();
+            msg.To.Add(toaddress);
+            string fromaddress = "ADMIN@PEMS<kamalworld.official@gmail.com> ";
+            msg.From = new MailAddress(fromaddress);
+
+            smtp.Send(msg);
+
+            Alert("Data Updated Sucessfully!");
+            NavigationManager.NavigateTo($"/");
+        }
+        else
+        {
+            NavigationManager.NavigateTo($"/identity/account/logout");
+
+        }
+    }
+
+    private async Task DeleteEmployee()
+    {
+        var response = await EmployeeService.DeleteEmployee(Employee);
+        warning_type = response.StatusCode == 200 ? WarningType.Success : WarningType.Error;
+        Warning_msg = response.Message;
+        ShowWarning = true;
+        Alert("Data Deleted Sucessfully! ");
+        NavigationManager.NavigateTo($"/");
+        StateHasChanged();
+    }
+    private void DeleteConfirmation() => ShowDeleteModel = true;
+    private void CancleDelete() => ShowDeleteModel = false;
+    private void DismissWarning()
+    {
+        ShowWarning=false;
+        NavigationManager.NavigateTo("/");
+    }
+  
+
+ 
+}
+

@@ -1,0 +1,41 @@
+﻿@page "/"
+<nav class="navbar navbar-light bg-light" >
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="#">
+            
+            Dashboard
+        </a>
+        <Button @onclick="showAlert">Policy!</Button>
+    </div>
+</nav>
+<Div>
+ <Card>
+    <CardBody>
+        <Form id="UserSearchForm" class="">
+            <Addons>
+                <Addon AddonType="AddonType.Body">
+                    <TextEdit 
+                              Autofocus="true"
+                              Placeholder="Search">
+                    </TextEdit>
+                     
+                </Addon>
+                <Addon AddonType="AddonType.End">
+                    @if (_showSearchClear)
+                    {
+                        <Button  Class="fw-light bg-danger text-white " Clicked="ClearSearch">Clear</Button>
+                    }
+                    <SubmitButton Form="UserSearchForm" Clicked="GetUsersAsync">
+                        <Icon Name="Blazorise.IconName.Search" Class="me-1"></Icon>Search
+                    </SubmitButton>
+                </Addon>
+            </Addons>
+        </Form>
+    </CardBody>
+</Card>
+
+</Div>
+
+
+
+

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "eoWQ3p5E8P3b0RUpYqc76+XZkgRL/9InmhLtYvtrZLA=",
+  "Source": "EPMS.API",
+  "BasePath": "_content/EPMS.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

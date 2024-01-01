@@ -1,0 +1,17 @@
+﻿@page "/bind"
+<h3>BindindDemo</h3>
+<b>Name :</b> @Name
+<b>Name with salutation:</b> @(Gender == "Male" ? $"Mr. {Name}" : $"Miss. {Name}")
+<h3>Two Way databinding</h3>
+
+@* <b>Name :</b><input value="@Name" @onchange="@(e => { Name = e.Value.ToString(); })" />
+ *@
+
+<b>Name :</b>
+<input @bind="Name" @bind:event="oninput" />
+
+@code {
+    protected string Name { get; set; } = "Tom";
+
+    protected string Gender { get; set; } = "Male";
+}

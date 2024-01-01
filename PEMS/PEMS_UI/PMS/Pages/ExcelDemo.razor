@@ -1,0 +1,54 @@
+﻿@* @page "/excel"
+@using Microsoft.AspNetCore.Mvc;
+@using PEMS_UI.Data;
+@inject IJSRuntime iJSRuntime
+<h3>ExcelDemo</h3>
+<button class="btn btn-primary" @onclick="GenerateExcel"> Click</button>
+@* @code {
+    private void GenerateExcel()
+    {
+        Student student = new Student();
+        student.GenerateExcel(iJSRuntime);
+    }
+} *@
+
+
+@* <div class="row text-right">
+    <div class="col-12 p-3">
+        <button class="btn btn-outline-success" @onclick="@(() =>DownloadExcel(formValues.Region, formValues.startDate, formValues.endDate))">
+            Export to Excel&nbsp;
+            <i class="fa fa-file-excel" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>  *@
+
+@* @code{
+
+public FileResult DownloadExcel(string Region, DateTime StartDate, DateTime EndDate)
+    {
+        FileResult ExcelFile =  searchService.ExportToExcel(Region, StartDate, EndDate);
+        return ExcelFile;
+    }
+
+    public FileResult ExportToExcel(string Region, DateTime StartDate, DateTime EndDate)
+        {
+            var queryable = context.AuditCardPinrecords.Where(s => Region == s.RegionRecordId)
+                .Where(s => s.AuditComplete == true)
+                .Where(s => s.DateTime >= StartDate && s.DateTime <= EndDate).AsQueryable();
+
+            var stream = new MemoryStream();
+
+            using (var package = new ExcelPackage(stream))
+            {
+                var workSheet = package.Workbook.Worksheets.Add("Sheet1");
+                workSheet.Cells.LoadFromCollection(queryable, true);
+                package.Save();
+            }
+
+
+            string excelName = $"AuditPinRecords-{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.xlsx";
+
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName); 
+
+        } *@
+        } 

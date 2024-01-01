@@ -1,0 +1,111 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PEMS_UI
+build_property.RootNamespace = PEMS_UI
+build_property.ProjectDir = G:\Learn_and_Impliment\PEMS\PEMS_UI\PEMS_UI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = G:\Learn_and_Impliment\PEMS\PEMS_UI\PEMS_UI
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Components/Card.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Components/DeleteConfirmationModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEZWxldGVDb25maXJtYXRpb25Nb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Components/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWRpcmVjdFRvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Components/Warning.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXYXJuaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/AddEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/EmployeeDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVEZXRhaWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/EmployeesTable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZWVzVGFibGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/ExcelDemo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWxEZW1vLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/Popup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9wdXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/Redirect.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVkaXJlY3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/TableButton.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFibGVCdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-r7anacrype
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-em576uktcy
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/_IdentityLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX0lkZW50aXR5TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Learn_and_Impliment/PEMS/PEMS_UI/PEMS_UI/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

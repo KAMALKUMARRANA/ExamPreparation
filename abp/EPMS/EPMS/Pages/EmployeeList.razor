@@ -1,0 +1,35 @@
+﻿@page "/list"
+<h3>EmployeeList</h3>
+<input type="checkbox" id="showFooter" @bind="showfooter"/>
+<label for="showFooter">ShowFooter</label>
+@if (Employees == null)
+{
+    <span class="loader"></span>
+}
+else{
+<div class="card-deck">
+@foreach(var emp in Employees)
+{
+            <div class="row justify-content-center m-3 overlay">
+                <div class="col-sm-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>@emp.FirstName @emp.LastName</h1>
+                        </div>
+
+                        <div class="card-body text-center">
+                            <h4>Employee ID : @emp.EmployeeId</h4>
+                            <h4>Email : @emp.Email</h4>
+                            <h4>Department : @emp.DepartmentId</h4>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button  class="btn btn-primary">Back</button>
+                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+</div>
+}

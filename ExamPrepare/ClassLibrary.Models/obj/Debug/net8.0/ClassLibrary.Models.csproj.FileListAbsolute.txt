@@ -1,0 +1,11 @@
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\bin\Debug\net8.0\ClassLibrary.Models.deps.json
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\bin\Debug\net8.0\ClassLibrary.Models.dll
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\bin\Debug\net8.0\ClassLibrary.Models.pdb
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.GeneratedMSBuildEditorConfig.editorconfig
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.AssemblyInfoInputs.cache
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.AssemblyInfo.cs
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.csproj.CoreCompileInputs.cache
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.dll
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\refint\ClassLibrary.Models.dll
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.pdb
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ref\ClassLibrary.Models.dll

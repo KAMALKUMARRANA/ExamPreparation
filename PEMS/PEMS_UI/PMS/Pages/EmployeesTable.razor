@@ -1,0 +1,222 @@
+﻿@page "/"
+@using PEMS_UI.Models;
+@using PEMS_UI.Services;
+@using PEMS_UI.Components;
+@using NsExcel =  Microsoft.Office.Interop.Excel;
+
+@if (Employees != null)
+{
+    <Card>
+        <div class="table-responsive">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                      <tr class="shadow-lg m-1 employee-row mb-5">
+                        <td>
+                            <div class="pt-2">
+                                <div class="employee-name centered-subdiv"><p>Employee Photo</p></div>
+
+                            </div>
+                        </td>
+                            <td>
+                                <div class="pt-2">
+                                    <div class="employee-name centered-subdiv"><p>Employee Name</p></div>
+                                    
+                                </div>
+                            </td>
+                        <td>
+                            <div class="pt-2">
+                                <div class="employee-name centered-subdiv"><p>Employee Type</p></div>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pt-2">
+                                <div class="employee-name centered-subdiv"><p>Employee Salary</p></div>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pt-2">
+                                <div class="employee-name centered-subdiv"><p>View & Edit </p></div>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pt-2">
+                                <div class="employee-name centered-subdiv"><p>Action </p></div>
+
+                            </div>
+                        </td>
+                        </tr>
+                    @foreach (var employee in Employees)
+                    {
+                        <tr class="shadow-lg m-1 employee-row mb-5">
+                            <td class="centered-cell"><img class="round-image" width="60" src="@employee.ImgUrl" /></td>
+                            <td>
+                                <div class="pt-2">
+                                    <div class="employee-name centered-subdiv">@employee.Name</div>
+                                    <div class="employee-position centered-subdiv">@employee.Position</div>
+                                </div>
+                            </td>
+                            <td class="centered-cell @GetEmployeeTypeStyle(employee.Type)">@employee.Type</td>
+                            <td class="centered-cell employee-salary">$@employee.Salary</td>
+                            <td class="centered-cell">
+                                <TableButton OnClickCallback="@(() => NavigateToEmployeeDetail(employee.Id))" />
+
+                            </td>
+         @*                    <td class="centered-cell">
+
+                                <TableButton OnClickCallback="@(() =>ListToExcel(Employees))" />
+                            </td> *@
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </Card>
+}
+
+@code {
+
+    [Inject] private IEmployeeService EmployeeService { get; set; }
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    private List<Employee>? Employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await EmployeeService.GetEmployees();
+        Employees = response.Employees;
+    }
+
+    private string GetEmployeeTypeStyle(EmployeeType employeeType) => employeeType switch
+    {
+        EmployeeType.Freelance => "freelance",
+        EmployeeType.PartTime => "part-time",
+        EmployeeType.Casual => "casual",
+        EmployeeType.FullTime => "full-time"
+    };
+
+    private void NavigateToEmployeeDetail(int employeeId)
+    {
+        // Navigate to the user page using the user ID
+        NavigationManager.NavigateTo($"/employee/{employeeId}");
+    }
+
+
+
+
+    public void ListToExcel(List<Employee> list)
+    {
+       
+        NsExcel.ApplicationClass excapp = new Microsoft.Office.Interop.Excel.ApplicationClass();
+
+       
+        excapp.Visible = true;
+
+    
+        var workbook = excapp.Workbooks.Add(NsExcel.XlWBATemplate.xlWBATWorksheet);
+
+       
+        string workbookPath = "D:\text.xls";
+        workbook = excapp.Workbooks.Open(workbookPath,
+            0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+            true, false, 0, true, false, false);
+
+    
+    var sheet = (NsExcel.Worksheet)workbook.Sheets[1]; 
+
+    //do something usefull: you select now an individual cell
+    var range = sheet.get_Range("A1", "A1");
+    range.Value2 = "test"; //Value2 is not a typo
+
+    //now the list
+    string cellName;
+    int counter = 1;
+    foreach (var item in list)
+    {
+        cellName = "A" + counter.ToString();
+         range = sheet.get_Range(cellName, cellName);
+        range.Value2 = item.ToString();
+        ++counter;
+    }
+
+    //you've probably got the point by now, so a detailed explanation about workbook.SaveAs and workbook.Close is not necessary
+    //important: if you did not make excel visible terminating your application will terminate excel as well - I tested it
+    //but if you did it - to be honest - I don't know how to close the main excel window - maybee somewhere around excapp.Windows or excapp.ActiveWindow
+    }
+
+
+
+
+}
+
+<style>
+    html,
+    body,
+    .intro {
+        height: 100%;
+    }
+
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .table {
+        border-spacing: 0 20px;
+    }
+
+    .card {
+        border-radius: .5rem;
+    }
+
+    .round-image {
+        border-radius: 50%;
+    }
+
+    .employee-name {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .employee-salary {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .centered-cell {
+        height: 80px;
+        width: 160px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .centered-subdiv {
+        height: 25px;
+        vertical-align: middle;
+    }
+
+    .part-time {
+        color: white;
+        background-color: darkred !important;
+    }
+
+    .full-time {
+        color: white;
+        background-color: darkblue !important;
+    }
+
+    .casual {
+        color: white;
+        background-color: darkgreen !important;
+    }
+
+    .freelance {
+        color: white;
+        background-color: darkmagenta !important;
+    }
+</style>

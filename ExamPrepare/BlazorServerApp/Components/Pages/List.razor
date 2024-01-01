@@ -1,0 +1,25 @@
+﻿@page "/list"
+@using BlazorServerApp.Services
+@using ClassLibrary.Models
+<SfListView DataSource="@employees">
+    <ListViewFieldSettings TValue="Employee" ></ListViewFieldSettings>
+</SfListView>
+<div class="card-deck">
+    @foreach (var emp in employees)
+    {
+        <DisplayEmployee emp="emp" ></DisplayEmployee>
+    }
+</div>
+
+@code
+{
+    [Inject]
+    public IEmployeeService employeeService { get; set; }
+    public IEnumerable<Employee> employees { get; set; }
+
+   
+    protected override async Task OnInitializedAsync()
+    {
+        employees = (await employeeService.GetEmployees()).ToList();
+    }
+}

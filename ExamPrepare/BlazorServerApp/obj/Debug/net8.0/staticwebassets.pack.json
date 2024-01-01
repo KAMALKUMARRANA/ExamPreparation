@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorServerApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BlazorServerApp.bundle.scp.css"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\images\\john.jpg",
+      "PackagePath": "staticwebassets\\images\\john.jpg"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\images\\mary.jpg",
+      "PackagePath": "staticwebassets\\images\\mary.jpg"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\images\\sam.jpg",
+      "PackagePath": "staticwebassets\\images\\sam.jpg"
+    },
+    {
+      "Id": "G:\\ExamPreparation\\ExamPrepare\\BlazorServerApp\\wwwroot\\images\\sara.jpg",
+      "PackagePath": "staticwebassets\\images\\sara.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorServerApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorServerApp.props",
+      "PackagePath": "build\\BlazorServerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorServerApp.props",
+      "PackagePath": "buildMultiTargeting\\BlazorServerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorServerApp.props",
+      "PackagePath": "buildTransitive\\BlazorServerApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

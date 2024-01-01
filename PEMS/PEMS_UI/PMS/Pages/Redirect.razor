@@ -1,0 +1,30 @@
+﻿@page "/rd"
+@using Newtonsoft.Json;
+@inject Microsoft.JSInterop.IJSRuntime JSRuntime;
+
+
+<button class="btn btn-primary" @onclick="home">HOME </button>
+<button class="btn btn-primary" @onclick="add">ADD </button>
+<button class="btn btn-primary" @onclick="()=>Alert(message)">Alert </button>
+
+@code {
+    private string message = "Hi This is your ";
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    public async void home()
+    {
+        Alert("HELLO");
+
+   
+    }
+    private async void add() => NavigationManager.NavigateTo("/add-employee");
+
+
+    private async Task Alert(string result)
+    {
+        
+        await JSRuntime.InvokeVoidAsync("Alert", result); 
+    
+    
+    }
+}
