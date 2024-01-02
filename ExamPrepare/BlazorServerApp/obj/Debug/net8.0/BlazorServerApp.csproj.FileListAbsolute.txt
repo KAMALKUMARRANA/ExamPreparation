@@ -280,3 +280,4 @@ G:\ExamPreparation\ExamPrepare\BlazorServerApp\bin\Debug\net8.0\Syncfusion.Blazo
 G:\ExamPreparation\ExamPrepare\BlazorServerApp\bin\Debug\net8.0\Syncfusion.Licensing.dll
 G:\ExamPreparation\ExamPrepare\BlazorServerApp\obj\Debug\net8.0\BlazorServerApp.RazorAssemblyInfo.cache
 G:\ExamPreparation\ExamPrepare\BlazorServerApp\obj\Debug\net8.0\BlazorServerApp.RazorAssemblyInfo.cs
+G:\ExamPreparation\ExamPrepare\BlazorServerApp\obj\Debug\net8.0\BlazorServerApp.sourcelink.json

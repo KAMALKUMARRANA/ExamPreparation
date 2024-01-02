@@ -8,6 +8,7 @@ using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using Syncfusion.Blazor;
 using BlazorServerApp.Data;
+using System.Diagnostics.Metrics;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddServerSideBlazor();
-
+builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(client=>
 {
@@ -59,12 +60,12 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseAntiforgery();
 
-
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
 
 app.Run();

@@ -1,5 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
+@* <AuthorizeView>
+    <Authorized> *@
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -15,7 +17,11 @@
         </article>
     </main>
 </div>
-
+@*     </Authorized>
+    <NotAuthorized>
+        <RedirectToLogin></RedirectToLogin>
+    </NotAuthorized>
+</AuthorizeView> *@
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>

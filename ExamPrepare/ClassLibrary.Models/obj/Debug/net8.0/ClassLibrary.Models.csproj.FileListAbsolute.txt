@@ -9,3 +9,4 @@ G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary
 G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\refint\ClassLibrary.Models.dll
 G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.pdb
 G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ref\ClassLibrary.Models.dll
+G:\ExamPreparation\ExamPrepare\ClassLibrary.Models\obj\Debug\net8.0\ClassLibrary.Models.sourcelink.json
